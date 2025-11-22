@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     header: {
@@ -9,6 +10,7 @@ export const translations = {
       previewNotice: 'This is a preview. Log in for your personalized analysis.',
       loginWithGoogle: 'Login with Google',
       loginWithX: 'Login with X',
+      loggingIn: 'Logging in...',
       attributes: {
         break: 'BREAK',
         slide: 'SLIDE',
@@ -57,6 +59,7 @@ export const translations = {
       previewNotice: '이것은 미리보기 화면입니다. 로그인하여 당신의 플레이 스타일을 분석해 보세요.',
       loginWithGoogle: 'Google 계정으로 로그인',
       loginWithX: 'X 계정으로 로그인',
+      loggingIn: '로그인 중...',
       attributes: {
         break: 'BREAK',
         slide: 'SLIDE',
@@ -105,6 +108,7 @@ export const translations = {
       previewNotice: 'これはプレビューです。ログインして、あなたのプレイスタイルを分析しましょう。',
       loginWithGoogle: 'Googleアカウントでログイン',
       loginWithX: 'Xアカウントでログイン',
+      loggingIn: 'ログインしています...',
       attributes: {
         break: 'BREAK',
         slide: 'SLIDE',

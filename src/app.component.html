@@ -1,9 +1,10 @@
+
 <div class="relative min-h-screen overflow-hidden">
   <div class="absolute inset-0 bg-grid-gray-700/20 [mask-image:linear-gradient(to_bottom,white_5%,transparent_90%)]"></div>
   <app-header />
   <main class="relative z-10">
     @if (!isLoggedIn()) {
-      <app-login (loginRequest)="handleLogin()" />
+      <app-login />
     } @else if (!maimaiData()) {
       <app-import />
     } @else {

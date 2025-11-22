@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy, output, inject, computed } from '@angular/core';
+
+import { Component, ChangeDetectionStrategy, inject, computed, signal } from '@angular/core';
 import { I18nService } from '../../i18n/i18n.service';
 import { HexagonGraphComponent } from '../hexagon-graph/hexagon-graph.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,9 @@ import { HexagonGraphComponent } from '../hexagon-graph/hexagon-graph.component'
 })
 export class LoginComponent {
   i18n = inject(I18nService);
-  loginRequest = output<void>();
+  authService = inject(AuthService);
+
+  loadingProvider = signal<'Google' | 'X' | null>(null);
 
   // Translated text signals
   title = computed(() => this.i18n.t('login.title'));
@@ -19,6 +23,7 @@ export class LoginComponent {
   previewNoticeText = computed(() => this.i18n.t('login.previewNotice'));
   loginGoogleText = computed(() => this.i18n.t('login.loginWithGoogle'));
   loginXText = computed(() => this.i18n.t('login.loginWithX'));
+  loggingInText = computed(() => this.i18n.t('login.loggingIn'));
   
   // Mock data for the preview graph
   mockData = {
@@ -30,8 +35,15 @@ export class LoginComponent {
     rapid: 13.5
   };
 
-  // Mock login event
-  login() {
-    this.loginRequest.emit();
+  async login(provider: 'Google' | 'X') {
+    if (this.loadingProvider()) return;
+    this.loadingProvider.set(provider);
+    try {
+      await this.authService.loginWith(provider);
+    } catch (e) {
+      console.error('Login failed', e);
+    } finally {
+      this.loadingProvider.set(null);
+    }
   }
 }

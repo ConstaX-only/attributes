@@ -1,10 +1,12 @@
-import { Component, ChangeDetectionStrategy, signal, OnInit, inject, PLATFORM_ID } from '@angular/core';
+
+import { Component, ChangeDetectionStrategy, signal, OnInit, inject, PLATFORM_ID, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HeaderComponent } from './app/components/header/header.component';
 import { LoginComponent } from './app/components/login/login.component';
 import { ImportComponent } from './app/components/import/import.component';
 import { GraphComponent } from './app/components/graph/graph.component';
 import { MaimaiData } from './app/maimai-data.model';
+import { AuthService } from './app/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +17,9 @@ import { MaimaiData } from './app/maimai-data.model';
 })
 export class AppComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
+  authService = inject(AuthService);
 
-  isLoggedIn = signal(false);
+  isLoggedIn = computed(() => !!this.authService.currentUser());
   maimaiData = signal<MaimaiData | null>(null);
 
   ngOnInit() {
@@ -46,14 +49,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  handleLogin() {
-    // In a real app, this would involve an auth service.
-    // For now, we simulate a successful login.
-    this.isLoggedIn.set(true);
-  }
-
-  handleLogout() {
-    this.isLoggedIn.set(false);
+  async handleLogout() {
+    await this.authService.logout();
     this.maimaiData.set(null);
     if (isPlatformBrowser(this.platformId)) {
         localStorage.removeItem('maimaiDxAttributesData');
