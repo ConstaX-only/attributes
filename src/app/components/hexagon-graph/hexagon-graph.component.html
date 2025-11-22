@@ -1,0 +1,48 @@
+<div class="relative w-full max-w-lg mx-auto aspect-square">
+  <div class="absolute inset-0 bg-gradient-to-br from-orange-900/50 to-amber-900/50 rounded-full blur-3xl"></div>
+  <div class="relative w-full h-full flex items-center justify-center">
+    <svg class="w-full h-full" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="hexGrid" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color: #7c2d12; stop-opacity: 0.3"/>
+          <stop offset="100%" style="stop-color: #78350f; stop-opacity: 0.3"/>
+        </linearGradient>
+        <polygon id="hexagon" points="100,10 177.9,55 177.9,145 100,190 22.1,145 22.1,55" />
+      </defs>
+      <g>
+        <use xlink:href="#hexagon" fill="none" stroke="url(#hexGrid)" stroke-width="1.5"/>
+        @for (i of [1,2,3,4]; track i) {
+          <use xlink:href="#hexagon" fill="none" stroke="rgba(255, 109, 0, 0.1)" stroke-width="1" [attr.transform]="'translate(100,100) scale(' + (1 - i*0.2) + ') translate(-100,-100)'"/>
+        }
+        <polygon [attr.points]="dataPolygonPoints()" fill="rgba(255, 109, 0, 0.25)" stroke="#FF6D00" stroke-width="2" />
+      </g>
+    </svg>
+    <div class="absolute inset-0 flex items-center justify-center text-gray-300 text-xs font-semibold uppercase tracking-widest pointer-events-none">
+      <div class="absolute top-[5%] text-center" style="transform: translateY(-50%)">
+        <span>{{ attrBreak() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ break().toFixed(1) }}</span>
+      </div>
+      <div class="absolute top-[25%] right-[-2%] text-center" style="transform: translateY(-50%)">
+        <span>{{ attrSlide() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ slide().toFixed(1) }}</span>
+      </div>
+      <div class="absolute bottom-[25%] right-[-2%] text-center" style="transform: translateY(50%)">
+        <span>{{ attrHandTravel() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ handTravel().toFixed(1) }}</span>
+      </div>
+      <div class="absolute bottom-[5%] text-center" style="transform: translateY(50%)">
+        <span>{{ attrSpin() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ spin().toFixed(1) }}</span>
+      </div>
+      <div class="absolute bottom-[25%] left-[-2%] text-center" style="transform: translateY(50%)">
+        <span>{{ attrPeak() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ peak().toFixed(1) }}</span>
+      </div>
+      <div class="absolute top-[25%] left-[-2%] text-center" style="transform: translateY(-50%)">
+        <span>{{ attrRapid() }}</span>
+        <span class="block text-orange-400 font-bold text-base">{{ rapid().toFixed(1) }}</span>
+      </div>
+    </div>
+    <ng-content></ng-content> <!-- For overlay content -->
+  </div>
+</div>

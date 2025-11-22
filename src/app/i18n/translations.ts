@@ -6,7 +6,7 @@ export const translations = {
     login: {
       title: 'Discover Your Play Style',
       subtitle: 'Analyze your maimai DX play style. Get your personalized hexagon graph showing your skills.',
-      preview: 'PREVIEW',
+      previewNotice: 'This is a preview. Log in for your personalized analysis.',
       loginWithGoogle: 'Login with Google',
       loginWithX: 'Login with X',
       attributes: {
@@ -36,10 +36,9 @@ export const translations = {
       }
     },
     graph: {
-      title: 'Data Loaded Successfully!',
+      title: 'Your Analysis',
       welcome: 'Welcome back,',
       playSummary: 'We\'ve found your play data with {{playCount}} games played.',
-      viewGraph: 'View Your Graph (Soon)',
       logout: 'Logout',
       reset: 'Or, import new data'
     },
@@ -55,7 +54,7 @@ export const translations = {
     login: {
       title: '플레이 스타일을 발견하세요',
       subtitle: 'maimai DX 플레이 데이터를 분석하여 당신의 강점과 약점을 보여주는 특별한 육각 그래프를 확인해 보세요.',
-      preview: '미리보기',
+      previewNotice: '이것은 미리보기 화면입니다. 로그인하여 당신의 플레이 스타일을 분석해 보세요.',
       loginWithGoogle: 'Google 계정으로 로그인',
       loginWithX: 'X 계정으로 로그인',
       attributes: {
@@ -85,10 +84,9 @@ export const translations = {
       }
     },
     graph: {
-      title: '데이터를 성공적으로 불러왔습니다!',
+      title: '당신의 플레이 스타일 분석',
       welcome: '돌아오신 것을 환영합니다,',
       playSummary: '총 {{playCount}} 게임의 플레이 기록을 확인했습니다.',
-      viewGraph: '그래프 보기 (준비 중)',
       logout: '로그아웃',
       reset: '새로운 데이터로 다시 분석하기'
     },
@@ -104,7 +102,7 @@ export const translations = {
     login: {
       title: 'あなたのプレイスタイルを発見',
       subtitle: 'maimai DXのプレイデータを分析し、あなたのスキルを可視化する特別な六角形グラフで実力を確かめましょう。',
-      preview: 'プレビュー',
+      previewNotice: 'これはプレビューです。ログインして、あなたのプレイスタイルを分析しましょう。',
       loginWithGoogle: 'Googleアカウントでログイン',
       loginWithX: 'Xアカウントでログイン',
       attributes: {
@@ -134,10 +132,9 @@ export const translations = {
       }
     },
     graph: {
-      title: 'データが正常に読み込まれました！',
+      title: 'あなたのプレイスタイル分析',
       welcome: 'おかえりなさい、',
       playSummary: '合計 {{playCount}} ゲームのプレイデータを確認しました。',
-      viewGraph: 'グラフを見る (準備中)',
       logout: 'ログアウト',
       reset: '新しいデータで再分析'
     },

@@ -1,54 +1,38 @@
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
-  <div class="grid md:grid-cols-2 gap-12 items-center">
-    <div class="text-center md:text-left">
-      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-        {{ title() }}
-      </h1>
-      <p class="mt-4 max-w-xl mx-auto md:mx-0 text-lg md:text-xl text-gray-400">
-        {{ subtitle() }}
-      </p>
-      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <button (click)="login('google')" class="w-full sm:w-auto flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#FF6D00] hover:bg-orange-600 transition-colors">
-           <svg class="w-5 h-5 mr-3" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.73 4.1-1.02 1.02-2.3 1.84-4.32 1.84-3.6 0-6.5-2.95-6.5-6.5s2.9-6.5 6.5-6.5c1.95 0 3.35.73 4.1 1.5l2.65-2.65C19.1 1.95 16.3.85 12.48.85c-5.6 0-10.2 4.6-10.2 10.2s4.6 10.2 10.2 10.2c5.6 0 10.2-4.6 10.2-10.2 0-.73-.05-1.45-.15-2.15z" fill="#FFFFFF"/></svg>
-           {{ loginGoogleText() }}
-        </button>
-        <button (click)="login('x')" class="w-full sm:w-auto flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
-           <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-1.78 13h2.683L4.22 2.15H1.685l9.14 11.6Z"/></svg>
-           {{ loginXText() }}
-        </button>
-      </div>
-    </div>
-    <div class="relative w-full max-w-sm mx-auto aspect-square">
-      <div class="absolute inset-0 bg-gradient-to-br from-orange-900/50 to-amber-900/50 rounded-full blur-3xl"></div>
-      <div class="relative w-full h-full flex items-center justify-center">
-        <svg class="w-full h-full" viewBox="0 0 200 200">
-          <defs>
-            <linearGradient id="hexGrid" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color: #7c2d12; stop-opacity: 0.3"/>
-              <stop offset="100%" style="stop-color: #78350f; stop-opacity: 0.3"/>
-            </linearGradient>
-            <polygon id="hexagon" points="100,0 186.6,50 186.6,150 100,200 13.4,150 13.4,50" />
-          </defs>
-          <g transform="translate(100, 100) scale(0.9) translate(-100, -100)">
-            <use xlink:href="#hexagon" fill="none" stroke="url(#hexGrid)" stroke-width="2"/>
-            @for (i of [1,2,3,4,5]; track i) {
-              <use xlink:href="#hexagon" fill="none" stroke="rgba(255, 109, 0, 0.1)" stroke-width="1" [attr.transform]="'translate(100,100) scale(' + (1 - i*0.2) + ') translate(-100,-100)'"/>
-            }
-            <polygon points="100,100 100,10 178,55 178,145 100,190 22,145 22,55" fill="rgba(255, 109, 0, 0.15)" stroke="#FF6D00" stroke-width="1.5" />
-          </g>
-        </svg>
-        <div class="absolute inset-0 flex items-center justify-center text-gray-300 text-xs font-semibold uppercase tracking-widest">
-            <span class="absolute top-[12%]" style="transform: translateY(-50%)">{{ attrBreak() }}</span>
-            <span class="absolute top-[32%] right-[5%]" style="transform: translate(50%, -50%) rotate(60deg)">{{ attrSlide() }}</span>
-            <span class="absolute bottom-[32%] right-[5%]" style="transform: translate(50%, 50%) rotate(-60deg)">{{ attrHandTravel() }}</span>
-            <span class="absolute bottom-[12%]" style="transform: translateY(50%)">{{ attrSpin() }}</span>
-            <span class="absolute bottom-[32%] left-[5%]" style="transform: translate(-50%, 50%) rotate(60deg)">{{ attrPeak() }}</span>
-            <span class="absolute top-[32%] left-[5%]" style="transform: translate(-50%, -50%) rotate(-60deg)">{{ attrRapid() }}</span>
-            <div class="absolute text-center bg-gray-900/50 backdrop-blur-sm rounded-lg p-2 px-4">
-              <div class="text-sm font-bold text-orange-400">{{ previewText() }}</div>
-            </div>
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+  <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+    {{ title() }}
+  </h1>
+  <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
+    {{ subtitle() }}
+  </p>
+
+  <div class="mt-12">
+    <app-hexagon-graph
+      [break]="mockData.break"
+      [slide]="mockData.slide"
+      [handTravel]="mockData.handTravel"
+      [spin]="mockData.spin"
+      [peak]="mockData.peak"
+      [rapid]="mockData.rapid">
+      
+      <!-- Preview Overlay -->
+      <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-sm flex items-center justify-center rounded-full">
+        <div class="text-center p-4">
+          <div class="text-lg font-bold text-orange-400">{{ previewNoticeText() }}</div>
         </div>
       </div>
-    </div>
+
+    </app-hexagon-graph>
+  </div>
+  
+  <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+    <button (click)="login()" class="w-full sm:w-auto flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#FF6D00] hover:bg-orange-600 transition-colors">
+       <svg class="w-5 h-5 mr-3" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.18-1.73 4.1-1.02 1.02-2.3 1.84-4.32 1.84-3.6 0-6.5-2.95-6.5-6.5s2.9-6.5 6.5-6.5c1.95 0 3.35.73 4.1 1.5l2.65-2.65C19.1 1.95 16.3.85 12.48.85c-5.6 0-10.2 4.6-10.2 10.2s4.6 10.2 10.2 10.2c5.6 0 10.2-4.6 10.2-10.2 0-.73-.05-1.45-.15-2.15z" fill="#FFFFFF"/></svg>
+       {{ loginGoogleText() }}
+    </button>
+    <button (click)="login()" class="w-full sm:w-auto flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition-colors">
+       <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-1.78 13h2.683L4.22 2.15H1.685l9.14 11.6Z"/></svg>
+       {{ loginXText() }}
+    </button>
   </div>
 </div>
