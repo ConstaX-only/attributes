@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 브랜치 이름이 master라면 master로 변경하세요
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # 핵심: 여기서 base-href를 자동으로 설정해서 빌드합니다.
+      - name: Build
+        run: npm run build -- --base-href /attributes/
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # 배포할 브랜치 (자동 생성됨)
+          folder: dist     # angular.json 설정에 따른 빌드 결과물 폴더
