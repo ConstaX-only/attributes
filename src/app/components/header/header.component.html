@@ -1,0 +1,19 @@
+<header class="absolute top-0 left-0 right-0 z-20 py-4">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+    <h1 class="text-2xl font-bold tracking-tight text-white">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-400">{{ title() }}</span>
+    </h1>
+    <div class="flex items-center gap-2">
+      @for (lang of i18n.availableLangs; track lang) {
+        <button 
+          (click)="changeLang(lang)"
+          class="px-3 py-1 text-sm font-semibold text-white rounded-md transition-colors uppercase"
+          [class.bg-orange-500]="i18n.currentLang() === lang"
+          [class.bg-gray-700/50]="i18n.currentLang() !== lang"
+          [class.hover:bg-orange-600]="i18n.currentLang() !== lang">
+          {{ lang }}
+        </button>
+      }
+    </div>
+  </div>
+</header>

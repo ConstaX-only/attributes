@@ -1,0 +1,45 @@
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+  <div class="max-w-4xl mx-auto text-center">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-400">attributes</span>
+    </h1>
+    <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
+      Analyze your <span class="font-bold text-orange-300">maimai DX</span> play style. Discover your unique strengths and weaknesses with a personalized hexagonal stat graph.
+    </p>
+  </div>
+  <div class="mt-12 text-left max-w-3xl mx-auto space-y-8">
+    <h2 class="text-3xl font-bold text-center text-white">{{ title() }}</h2>
+    <!-- Step 1 -->
+    <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg border border-gray-700 flex items-start gap-4">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-xl font-bold text-gray-900">1</div>
+      <div>
+        <h3 class="text-xl font-semibold text-white">{{ step1Title() }}</h3>
+        <p class="text-gray-400 mt-1">{{ step1Desc() }}</p>
+        <div class="mt-4">
+          <a [href]="bookmarkletHref" class="inline-flex items-center gap-2 px-5 py-2.5 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 cursor-move shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+            {{ step1Btn() }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Step 2 -->
+    <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg border border-gray-700 flex items-start gap-4">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-xl font-bold text-gray-900">2</div>
+      <div>
+        <h3 class="text-xl font-semibold text-white">{{ step2Title() }}</h3>
+        <p class="text-gray-400 mt-1">{{ step2Desc() }} <a href="https://maimaidx-eng.com/" target="_blank" rel="noopener noreferrer" class="text-orange-400 underline hover:text-orange-300">{{ step2Link() }}</a></p>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div class="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg border border-gray-700 flex items-start gap-4">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center text-xl font-bold text-gray-900">3</div>
+      <div>
+        <h3 class="text-xl font-semibold text-white">{{ step3Title() }}</h3>
+        <p class="text-gray-400 mt-1">{{ step3Desc() }}</p>
+      </div>
+    </div>
+  </div>
+</div>
